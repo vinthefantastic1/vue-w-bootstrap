@@ -1,8 +1,31 @@
 <template>
   <div id="app">
+  <b-container>
+    <div class="row">
+    <h1>Hello, Bootstrap-Vue</h1>
+    </div>
 
-      <div id="app" class="small-container">
-    <h1>Employees</h1>
+    <b-btn 
+      variant="primary"
+      @click="showAlert = true"
+       v-b-tooltip.hover 
+  title="This button triggers the alert"
+       >
+      Click
+    </b-btn>
+
+
+    <b-alert 
+      v-bind:show="showAlert"
+      variant="success" >
+
+      You clicked the button!
+    </b-alert>
+
+  </b-container>
+
+      <div id="app" class="table table-condensed table-striped">
+    <h2>Employees</h2>
 
     <employee-table />
   </div>
@@ -19,17 +42,13 @@ export default {
   name: 'App',
   components: {
     EmployeeTable,
-  }
+  },
+data: () => ({
+    showAlert: false
+  })
+
+
 }
 </script>
 
-<style>
-  button {
-    background: #009435;
-    border: 1px solid #009435;
-  }
 
-  .small-container {
-    max-width: 680px;
-  }
-</style>
